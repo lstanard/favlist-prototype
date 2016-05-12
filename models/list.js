@@ -1,16 +1,16 @@
-module.exports = function (sequelize, DataTypes) {
+module.exports = (sequelize, DataTypes) => {
 	var list = sequelize.define('list', {
 		name: {
 			type: DataTypes.STRING,
-			allowNull: false
+			allowNull: true
 		},
 		listType: {
 			type: DataTypes.STRING,
-			allowNull: false
+			allowNull: true
 		},
 		description: {
 			type: DataTypes.STRING,
-			allowNull: false,
+			allowNull: true,
 			validate: {
 				len: [1, 250]
 			}
