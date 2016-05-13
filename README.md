@@ -10,7 +10,7 @@
 ## Features
 
 * WebPack build system
-* MochaJS node application testing
+* Mocha node application testing
 
 ## Application notes
 
