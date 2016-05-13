@@ -2,12 +2,17 @@
   "name": "favlist-prototype",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha",
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lstanard/favlist-prototype"
+  },
   "dependencies": {
     "body-parser": "^1.15.1",
     "express": "^4.13.4",
@@ -18,8 +23,10 @@
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
+    "chai": "^3.5.0",
     "cssnano": "^3.5.2",
     "extract-text-webpack-plugin": "^1.0.1",
+    "mocha": "^2.4.5",
     "modernizr-webpack-plugin": "^1.0.5",
     "path": "^0.12.7",
     "webpack": "^1.13.0",

@@ -12,6 +12,11 @@
 * WebPack build system
 * Mocha node application testing
 
+## Commands
+
+* `npm start` = start application
+* `npm test` = run mocha tests
+
 ## Application notes
 
 ### Models
@@ -25,3 +30,5 @@
 	* listItem.belongsTo(list)
 
 ## TODO
+
+* Set up Mocha testing (https://www.distelli.com/docs/tutorials/automated-mocha-tests-for-node)
