@@ -23,3 +23,7 @@
 	* list.hasMany(listItem)
 * ListItem [notes]
 	* listItem.belongsTo(list)
+
+## TODO
+
+* Organize routes with express.Router() (https://www.terlici.com/2014/09/29/express-router.html)

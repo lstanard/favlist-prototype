@@ -2,11 +2,11 @@ module.exports = (sequelize, DataTypes) => {
 	var list = sequelize.define('list', {
 		name: {
 			type: DataTypes.STRING,
-			allowNull: true
+			allowNull: false
 		},
 		listType: {
 			type: DataTypes.STRING,
-			allowNull: true
+			allowNull: false
 		},
 		description: {
 			type: DataTypes.STRING,
