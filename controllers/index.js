@@ -4,8 +4,9 @@
 var express = require('express');
 var router = express.Router();
 
-router.use('/lists', require('./lists.js'));
 router.use('/users', require('./users.js'));
+router.use('/lists', require('./lists.js'));
+router.use(require('./listItems.js'));
 
 router.use(express.static('public'));
 

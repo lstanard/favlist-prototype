@@ -10,7 +10,7 @@
 ## Features
 
 * WebPack build system
-* Mocha node application testing
+* Mocha testing
 
 ## Commands
 
@@ -21,16 +21,24 @@
 
 ### Models
 
-* User [email, name, salt, password_hash, password]
+* User
 	* user.hasMany(list)
-* List [name, list_type, description]
+* List
 	* list.belongsTo(user)
 	* list.hasMany(listItem)
-* ListItem [notes]
+* ListItem
 	* listItem.belongsTo(list)
+
+### Resources
+
+* Create new user = `POST /users`
+* User login = `POST /users/login`
+* User logout = `DELETE /users/login`
 
 ## TODO
 
+* Add listItem model and associations
 * Set up Mocha testing (https://www.distelli.com/docs/tutorials/automated-mocha-tests-for-node)
 * Finish user model, authentication
 * Abstract keys in user model methods
+* Fix sequelize-fixtures test data issue (in db.js)

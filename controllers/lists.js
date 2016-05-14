@@ -1,8 +1,8 @@
 var express = require('express');
-var router = express.Router();
 var _ = require('lodash');
 var db = require(__dirname + './../db.js');
 var middleware = require(__dirname + './../middleware.js')(db);
+var router = express.Router();
 
 var listParams = ['name', 'description'];
 
