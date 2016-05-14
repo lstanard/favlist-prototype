@@ -85,21 +85,11 @@ router.put('/:id', middleware.requireAuthentication, (req, res) => {
 	var body = _.pick(req.body, listParams);
 	var attributes = {};
 
-	// TODO: Test this
-	// listParams.forEach((param) => {
-	// 	if (body.hasOwnProperty(param)) {
-	// 		attributes[param] = body[param];
-	// 	}
-	// });
-
-	if (body.hasOwnProperty('name'))
-		attributes.name = body.name;
-
-	if (body.hasOwnProperty('listType'))
-		attributes.listType = body.listType;
-
-	if (body.hasOwnProperty('description'))
-		attributes.description = body.description;
+	listParams.forEach((param) => {
+		if (body.hasOwnProperty(param)) {
+			attributes[param] = body[param];
+		}
+	});
 
 	db.list.findOne({
 		where: {
