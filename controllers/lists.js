@@ -2,15 +2,24 @@ var express = require('express');
 var router = express.Router();
 var _ = require('lodash');
 var db = require(__dirname + './../db.js');
-var middleware = require(__dirname + './../middleware.js');
+var middleware = require(__dirname + './../middleware.js')(db);
 
-var listParams = ['name', 'listType', 'description'];
+var listParams = ['name', 'description'];
 
-// GET /lists
-router.get('/', (req, res) => {
+// GET /lists?q=string
+router.get('/', middleware.requireAuthentication, (req, res) => {
 	var query = req.query;
+	var where = {
+		userId: req.user.get('id')
+	};
 
-	db.list.findAll().then((lists) => {
+	if (query.hasOwnProperty('q') && query.q.length > 0) {
+		where.description = {
+			$like: '%' + query.q + '%'
+		};
+	}
+
+	db.list.findAll({where}).then((lists) => {
 		res.json(lists);
 	}, (e) => {
 		res.status(500).send();
@@ -18,12 +27,13 @@ router.get('/', (req, res) => {
 });
 
 // GET /lists/:id
-router.get('/:id', (req, res) => {
+router.get('/:id', middleware.requireAuthentication, (req, res) => {
 	var listId = parseInt(req.params.id, 10);
 
 	db.list.findOne({
 		where: {
-			id: listId
+			id: listId,
+			userId: req.user.get('id')
 		}
 	}).then((list) => {
 		if (!!list)
@@ -36,23 +46,28 @@ router.get('/:id', (req, res) => {
 });
 
 // POST /lists
-router.post('/', (req, res) => {
+router.post('/', middleware.requireAuthentication, (req, res) => {
 	var body = _.pick(req.body, listParams);
 
 	db.list.create(body).then((list) => {
-		res.json(list.toJSON());
+		req.user.addList(list).then(() => {
+			return list.reload();
+		}).then((list) => {
+			res.json(list.toJSON());
+		});
 	}, (e) => {
 		res.status(400).json(e);
 	});
 });
 
 // DELETE /lists/:id
-router.delete('/:id', (req, res) => {
+router.delete('/:id', middleware.requireAuthentication, (req, res) => {
 	var listId = parseInt(req.params.id, 10);
 
 	db.list.destroy({
 		where: {
-			id: listId
+			id: listId,
+			userId: req.user.get('id')
 		}
 	}).then((rowsDeleted) => {
 		if (rowsDeleted === 0)
@@ -65,10 +80,17 @@ router.delete('/:id', (req, res) => {
 });
 
 // PUT /lists/:id
-router.put('/:id', (req, res) => {
+router.put('/:id', middleware.requireAuthentication, (req, res) => {
 	var listId = parseInt(req.params.id, 10);
 	var body = _.pick(req.body, listParams);
 	var attributes = {};
+
+	// TODO: Test this
+	// listParams.forEach((param) => {
+	// 	if (body.hasOwnProperty(param)) {
+	// 		attributes[param] = body[param];
+	// 	}
+	// });
 
 	if (body.hasOwnProperty('name'))
 		attributes.name = body.name;
@@ -81,7 +103,8 @@ router.put('/:id', (req, res) => {
 
 	db.list.findOne({
 		where: {
-			id: listId
+			id: listId,
+			userId: req.user.get('id')
 		}
 	}).then((list) => {
 		if (list) {

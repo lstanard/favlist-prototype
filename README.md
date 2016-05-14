@@ -32,3 +32,5 @@
 ## TODO
 
 * Set up Mocha testing (https://www.distelli.com/docs/tutorials/automated-mocha-tests-for-node)
+* Finish user model, authentication
+* Abstract keys in user model methods
