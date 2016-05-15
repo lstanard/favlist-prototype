@@ -13,7 +13,7 @@ var server;
 app.use(bodyParser.json());
 app.use(require('./controllers'));
 
-db.sequelize.sync({force: true}).then(() => {
+db.sequelize.sync().then(() => {
 	exports.startServer();
 });
 
