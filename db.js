@@ -36,9 +36,10 @@ db.token = sequelize.import(__dirname + '/models/token.js');
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-db.user.hasMany(db.list);
+// TODO: onDelete cascade isn't working
+db.user.hasMany(db.list, {onDelete: 'cascade'});
 db.list.belongsTo(db.user);
-db.list.hasMany(db.listItem);
+db.list.hasMany(db.listItem, {onDelete: 'cascade'});
 db.listItem.belongsTo(db.list);
 
 module.exports = db;

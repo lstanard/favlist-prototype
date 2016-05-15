@@ -37,7 +37,7 @@
 
 ## TODO
 
-* Add listItem model and associations
+* When a list is deleted all associated list items should be deleted too
 * Set up Mocha testing (https://www.distelli.com/docs/tutorials/automated-mocha-tests-for-node)
 * Finish user model, authentication
 * Abstract keys in user model methods
