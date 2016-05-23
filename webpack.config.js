@@ -45,18 +45,6 @@ var plugins = [
 
 	// use the old watch so our scss triggers changes
 	new webpack.OldWatchingPlugin(),
-
-	// Cleanup the builds/ folder before compiling our final assets
-	// new CleanPlugin('builds'),
-
-	// Export our svg resources
-	// new SvgStore(path.join(__dirname, '/images/SVG', '**/*.svg'), path.join('/'), {
-	//   name: 'sprites.svg',
-	//   prefix: 'sso-',
-	//   svgoOptions: {
-	//     cleanup: true
-	//   }
-	// })
 ];
 
 if (production) {
@@ -88,24 +76,14 @@ if (production) {
 
 module.exports = {
 	entry: {
-		"main": "./app/entry.js"
+		"main": "./app/main.js"
 	},
 	plugins: plugins,
-	externals: {
-		"jquery": "jQuery"
-	},
 	output: {
-		path: __dirname + '/public/js/',
+		path: __dirname + '/www/js/',
 		filename: "[name].entry.js"
 	},
 	module: {
-		preLoaders: [
-			{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				loader: "jshint-loader"
-			}
-		],
 		loaders: [
 			{
 				test: /\.scss$/i,
@@ -120,23 +98,6 @@ module.exports = {
 				loader: 'url?limit=25000'
 			}
 		]
-	},
-	jshint: {
-		// any jshint option http://www.jshint.com/docs/options/
-		// i. e.
-		camelcase: true,
-
-		// jshint errors are displayed by default as warnings
-		// set emitErrors to true to display them as errors
-		emitErrors: false,
-
-		// jshint to not interrupt the compilation
-		// if you want any file with jshint errors to fail
-		// set failOnHint to true
-		failOnHint: false,
-
-		// custom reporter function
-		reporter: function(errors) { }
 	},
 	postcss: [
 		autoprefixer({

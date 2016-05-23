@@ -10,6 +10,9 @@ var PORT = process.env.PORT || 3000;
 var exports = module.exports = {};
 var server;
 
+// Include JSX transpiler
+require('node-jsx').install();
+
 app.use(bodyParser.json());
 app.use(require('./controllers'));
 

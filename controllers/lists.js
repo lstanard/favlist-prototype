@@ -7,11 +7,9 @@ var router = express.Router();
 var listParams = ['name', 'description'];
 
 // GET /lists?q=string
-router.get('/', middleware.requireAuthentication, (req, res) => {
+router.get('/', (req, res) => {
 	var query = req.query;
-	var where = {
-		userId: req.user.get('id')
-	};
+	var where = {};
 
 	if (query.hasOwnProperty('q') && query.q.length > 0) {
 		where.description = {
@@ -27,13 +25,12 @@ router.get('/', middleware.requireAuthentication, (req, res) => {
 });
 
 // GET /lists/:id
-router.get('/:id', middleware.requireAuthentication, (req, res) => {
+router.get('/:id', (req, res) => {
 	var listId = parseInt(req.params.id, 10);
 
 	db.list.findOne({
 		where: {
-			id: listId,
-			userId: req.user.get('id')
+			id: listId
 		}
 	}).then((list) => {
 		if (!!list)
@@ -46,28 +43,23 @@ router.get('/:id', middleware.requireAuthentication, (req, res) => {
 });
 
 // POST /lists
-router.post('/', middleware.requireAuthentication, (req, res) => {
+router.post('/', (req, res) => {
 	var body = _.pick(req.body, listParams);
 
 	db.list.create(body).then((list) => {
-		req.user.addList(list).then(() => {
-			return list.reload();
-		}).then((list) => {
-			res.json(list.toJSON());
-		});
+		res.json(list.toJSON());
 	}, (e) => {
 		res.status(400).json(e);
 	});
 });
 
 // DELETE /lists/:id
-router.delete('/:id', middleware.requireAuthentication, (req, res) => {
+router.delete('/:id', (req, res) => {
 	var listId = parseInt(req.params.id, 10);
 
 	db.list.destroy({
 		where: {
-			id: listId,
-			userId: req.user.get('id')
+			id: listId
 		}
 	}).then((rowsDeleted) => {
 		if (rowsDeleted === 0)
@@ -80,7 +72,7 @@ router.delete('/:id', middleware.requireAuthentication, (req, res) => {
 });
 
 // PUT /lists/:id
-router.put('/:id', middleware.requireAuthentication, (req, res) => {
+router.put('/:id', (req, res) => {
 	var listId = parseInt(req.params.id, 10);
 	var body = _.pick(req.body, listParams);
 	var attributes = {};
@@ -93,8 +85,7 @@ router.put('/:id', middleware.requireAuthentication, (req, res) => {
 
 	db.list.findOne({
 		where: {
-			id: listId,
-			userId: req.user.get('id')
+			id: listId
 		}
 	}).then((list) => {
 		if (list) {
