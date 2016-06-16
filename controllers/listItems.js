@@ -7,7 +7,7 @@ var router = express.Router();
 var listItemParams = ['name', 'notes', 'rating'];
 
 // GET /lists/:id/list-items
-router.get('/lists/:listId/list-items', middleware.requireAuthentication, (req, res) => {
+router.get('/lists/:listId/list-items', (req, res) => {
 	var listId = parseInt(req.params.listId, 10);
 
 	db.listItem.findAll({
@@ -22,7 +22,7 @@ router.get('/lists/:listId/list-items', middleware.requireAuthentication, (req, 
 });
 
 // POST /lists/:list-id/list-items
-router.post('/lists/:listId/list-items', middleware.requireAuthentication, (req, res) => {
+router.post('/lists/:listId/list-items', (req, res) => {
 	var body = _.pick(req.body, listItemParams);
 	var listId = parseInt(req.params.listId, 10);
 
@@ -44,7 +44,7 @@ router.post('/lists/:listId/list-items', middleware.requireAuthentication, (req,
 });
 
 // DELETE /lists/:listId/list-items/:id
-router.delete('/lists/:listId/list-items/:id', middleware.requireAuthentication, (req, res) => {
+router.delete('/lists/:listId/list-items/:id', (req, res) => {
 	var listId = parseInt(req.params.listId, 10);
 	var listItemId = parseInt(req.params.id, 10);
 
@@ -64,7 +64,7 @@ router.delete('/lists/:listId/list-items/:id', middleware.requireAuthentication,
 });
 
 // PUT /lists/:listId/list-items/:id
-router.put('/lists/:listId/list-items/:id', middleware.requireAuthentication, (req, res) => {
+router.put('/lists/:listId/list-items/:id', (req, res) => {
 	var listId = parseInt(req.params.listId, 10);
 	var listItemId = parseInt(req.params.id, 10);
 	var body = _.pick(req.body, listItemParams);

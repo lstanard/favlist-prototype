@@ -6,16 +6,21 @@
 | --------------- | ------------    | ------------- |
 | Node.js         | `node -v`       | [nodejs.org](http://nodejs.org/) |
 | npm             | `npm -v`        | Comes packaged with Node.js |
+| Webpack		  | `webpack -v`	| npm install -g webpack |
 
-## Features
+## Installation
 
-* WebPack build system
-* Mocha testing
+1. `npm install`
 
 ## Commands
 
+Run on node.js version 5. `nvm use 5`
+
 * `npm start` = start application
-* `npm test` = run mocha tests
+
+## Build
+
+* `webpack --watch` = run webpack and watch for changes
 
 ## Application notes
 
@@ -35,10 +40,11 @@
 * User login = `POST /users/login`
 * User logout = `DELETE /users/login`
 
+### Deployment to Heroku
+
 ## TODO
 
 * When a list is deleted all associated list items should be deleted too
-* Set up Mocha testing (https://www.distelli.com/docs/tutorials/automated-mocha-tests-for-node)
 * Finish user model, authentication
 * Abstract keys in user model methods
 * Fix sequelize-fixtures test data issue (in db.js)

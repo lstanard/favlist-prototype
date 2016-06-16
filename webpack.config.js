@@ -1,12 +1,12 @@
 // var CleanPlugin = require('clean-webpack-plugin');
 // var SvgStore = require('webpack-svgstore-plugin');
-var path = require('path');
-var webpack = require('webpack');
-var ModernizrWebpackPlugin = require('modernizr-webpack-plugin');
-var WebpackNotifierPlugin = require('webpack-notifier');
-var ExtractPlugin = require('extract-text-webpack-plugin');
-var autoprefixer = require('autoprefixer');
-var cssnano = require('cssnano');
+var path 						= require('path');
+var webpack 					= require('webpack');
+var ModernizrWebpackPlugin 		= require('modernizr-webpack-plugin');
+var WebpackNotifierPlugin 		= require('webpack-notifier');
+var ExtractPlugin 				= require('extract-text-webpack-plugin');
+var autoprefixer 				= require('autoprefixer');
+var cssnano 					= require('cssnano');
 
 // production build flag
 var production = false;
@@ -66,7 +66,7 @@ if (production) {
 
 		// This plugin minifies all the Javascript code of the final bundle
 		new webpack.optimize.UglifyJsPlugin({
-			mangle: true,
+			mangle: false,
 			compress: {
 				warnings: false, // Suppress uglification warnings
 			},
@@ -76,11 +76,11 @@ if (production) {
 
 module.exports = {
 	entry: {
-		"main": "./app/main.js"
+		"main": "./public/main.js"
 	},
 	plugins: plugins,
 	output: {
-		path: __dirname + '/www/js/',
+		path: __dirname + '/public/js/',
 		filename: "[name].entry.js"
 	},
 	module: {

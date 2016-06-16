@@ -1,0 +1,27 @@
+<!doctype html>
+<html ng-app="favlist">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Favlist Prototype</title>
+	</head>
+	<body>
+		<h1>FavList Prototype</h1>
+		<div ng-controller="FavListController as favlist">
+			<ul>
+				<li ng-repeat="list in favlist.lists">
+					<h2>{{list.name}}</h2>
+					<p>{{list.description}}</p>
+					<a href="#" ng-click="favlist.removeList($index)">Delete list</a>
+				</li>
+			</ul>
+			<form ng-submit="favlist.addList()">
+				<input type="text" ng-model="favlist.name" placeholder="New list name">
+				<textarea ng-model="favlist.description"></textarea>
+				<input type="submit" value="add">
+			</form>
+		</div>
+	</body>
+	<script src="js/modernizr.js"></script>
+	<script src="js/main.entry.js"></script>
+</html>

@@ -6,6 +6,12 @@ var router = express.Router();
 
 var listParams = ['name', 'description'];
 
+router.use((req, res, next) => {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	next();
+});
+
 // GET /lists?q=string
 router.get('/', (req, res) => {
 	var query = req.query;
