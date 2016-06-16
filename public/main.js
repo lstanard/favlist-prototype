@@ -1,6 +1,6 @@
+require('./scss/main.scss');
+
 var angular = require('angular');
-var omit = require('lodash/omit');
-// var _ = require('lodash');
 
 angular.module('favlist', [])
 	.controller('FavListController', function ($scope, $http) {

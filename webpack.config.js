@@ -1,5 +1,3 @@
-// var CleanPlugin = require('clean-webpack-plugin');
-// var SvgStore = require('webpack-svgstore-plugin');
 var path 						= require('path');
 var webpack 					= require('webpack');
 var ModernizrWebpackPlugin 		= require('modernizr-webpack-plugin');
@@ -86,8 +84,8 @@ module.exports = {
 	module: {
 		loaders: [
 			{
-				test: /\.scss$/i,
-				loader: ExtractPlugin.extract(['css', 'postcss', 'sass'])
+				test: /\.scss$/,
+				loader: ExtractPlugin.extract('style-loader', 'css-loader', 'sass-loader')
 			},
 			{
 				test: /\.html/,
