@@ -20,7 +20,11 @@ Run on node.js version 5. `nvm use 5`
 
 ## Build
 
-* `webpack --watch` = run webpack and watch for changes
+* `npm run build`
+
+## Watch
+
+* `npm run dev`
 
 ## Application notes
 
