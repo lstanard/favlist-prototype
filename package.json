@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "webpack --watch",
+    "dev": "webpack --progress --colors --watch",
     "test": "mocha",
     "start": "webpack && nodemon app.js"
   },
