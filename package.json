@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "dev": "webpack --watch",
     "test": "mocha",
     "start": "webpack && nodemon app.js"
   },
