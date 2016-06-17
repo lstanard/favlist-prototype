@@ -7,20 +7,25 @@
 		<link rel=stylesheet href="css/main.css">
 	</head>
 	<body ng-cloak>
-		<h1>FavList Prototype</h1>
-		<div ng-controller="FavListController as favlist">
-			<ul>
-				<li ng-repeat="list in favlist.lists">
-					<h2>{{list.name}}</h2>
-					<p>{{list.description}}</p>
-					<a href="#" ng-click="favlist.removeList($index)">Delete list</a>
-				</li>
-			</ul>
-			<form ng-submit="favlist.addList()">
-				<input type="text" ng-model="favlist.name" placeholder="New list name">
-				<textarea ng-model="favlist.description"></textarea>
-				<input type="submit" value="add">
-			</form>
+		<div class="wrapper">
+			<h1>FavList Prototype</h1>
+			<div ng-controller="FavListController as favlist">
+				<div class="add-list-form">
+					<form ng-submit="favlist.addList()">
+						<input type="text" ng-model="favlist.name" placeholder="New list name">
+						<p>Notes</p>
+						<textarea ng-model="favlist.description"></textarea>
+						<input type="submit" value="add">
+					</form>
+				</div>
+				<ul>
+					<li ng-repeat="list in favlist.lists">
+						<h2>{{list.name}}</h2>
+						<p>{{list.description}}</p>
+						<p><a href="#" ng-click="favlist.removeList($index)">Delete list</a></p>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</body>
 	<script src="js/modernizr.js"></script>

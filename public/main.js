@@ -26,7 +26,7 @@ angular.module('favlist', [])
 					description: favlist.description
 				}
 			}).then(function successCallback(response) {
-				favlist.lists.push(response.data);
+				favlist.lists.unshift(response.data);
 			}, function errorCallback(response) {
 				console.log(response);
 			});

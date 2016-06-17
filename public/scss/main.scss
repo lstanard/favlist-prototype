@@ -1,5 +1,14 @@
 @import 'https://fonts.googleapis.com/css?family=Jaldi';
 
+$green: #53DF83;
+$blue: #47D2E9;
+$light-grey: #EEEEEE;
+$dark-grey: #3F3F3F;
+
+* {
+	box-sizing: border-box;
+}
+
 [ng\:cloak],
 [ng-cloak],
 [data-ng-cloak],
@@ -9,16 +18,39 @@
 	display: none !important;
 }
 
-h1 {
+body {
 	font-family: 'Jaldi', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+.wrapper {
+	padding: 15px;
+}
+
+/* Type */
+
+a {
+	text-decoration: none
+}
+
+p {
+	font-size: 16px;
+	line-height: 24px;
+	margin: 5px 0 10px 0;
+}
+
+h1 {
+	color: $blue;
 	font-size: 48px;
 	margin: 0;
 }
 
 h2 {
-	font-family: 'Jaldi', sans-serif;
-	font-size: 24px;
+	font-size: 32px;
+	line-height: 38px;
 	margin: 0;
+	padding: 0;
 }
 
 ul {
@@ -28,7 +60,51 @@ ul {
 }
 
 ul li {
-	background-color: #efefef;
+	background-color: $light-grey;
 	margin: 0 0 15px;
 	padding: 30px;
+}
+
+/* Forms */
+
+.add-list-form {
+	margin: 30px 0 45px 0;
+}
+
+input[type='text'],
+textarea {
+	display: block;
+	border: 1px solid #d1d1d1;
+	margin: 0 0 15px;
+	padding: 4px 12px;
+	width: 100%;
+	font-size: 16px;
+}
+
+input[type='text'] {
+	height: 40px;
+	line-height: 24px;
+}
+
+textarea {
+	height: 100px;
+	padding: 8px 12px;
+}
+
+input[type='submit'] {
+	border: 2px solid #000;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	cursor: pointer;
+	padding: 7px 30px;
+	display: inline-block;
+	margin: 0 0 15px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+	transition: all 0.3s;
 }

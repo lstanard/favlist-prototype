@@ -66,7 +66,7 @@ if (production) {
 		new webpack.optimize.UglifyJsPlugin({
 			mangle: false,
 			compress: {
-				warnings: false, // Suppress uglification warnings
+				warnings: false, // Suppress ugl ification warnings
 			},
 		})
 	]);
@@ -84,8 +84,8 @@ module.exports = {
 	module: {
 		loaders: [
 			{
-				test: /\.scss$/,
-				loader: ExtractPlugin.extract('style-loader', 'css-loader', 'sass-loader')
+				test: /\.scss$/i,
+				loader: ExtractPlugin.extract(['style', 'css!sass'])
 			},
 			{
 				test: /\.html/,

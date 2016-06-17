@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(1);
+	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./scss/main.scss\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 	var angular = __webpack_require__(2);
 
@@ -72,7 +72,7 @@
 						description: favlist.description
 					}
 				}).then(function successCallback(response) {
-					favlist.lists.push(response.data);
+					favlist.lists.unshift(response.data);
 				}, function errorCallback(response) {
 					console.log(response);
 				});
@@ -93,12 +93,7 @@
 		});
 
 /***/ },
-/* 1 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
+/* 1 */,
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
