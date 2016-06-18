@@ -1,5 +1,4 @@
-require('./scss/main.scss');
-
+var css = require('!style!css!sass!./scss/main.scss');
 var angular = require('angular');
 
 angular.module('favlist', [])
@@ -11,7 +10,7 @@ angular.module('favlist', [])
 			method: 'GET',
 			url: 'http://localhost:3000/lists'
 		}).then(function successCallback(response) {
-			favlist.lists = response.data;
+			favlist.lists = response.data.reverse();
 		}, function errorCallback(response) {
 			console.log(response);
 		});

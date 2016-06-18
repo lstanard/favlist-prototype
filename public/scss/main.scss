@@ -1,7 +1,6 @@
-@import 'https://fonts.googleapis.com/css?family=Jaldi';
-
 $green: #53DF83;
 $blue: #47D2E9;
+$red: #FC575E;
 $light-grey: #EEEEEE;
 $dark-grey: #3F3F3F;
 
@@ -19,19 +18,40 @@ $dark-grey: #3F3F3F;
 }
 
 body {
+	background-color: $green;
 	font-family: 'Jaldi', sans-serif;
 	margin: 0;
 	padding: 0;
 }
 
-.wrapper {
-	padding: 15px;
+.header {
+	background-color: #fff;
+	text-align: center;
 }
 
 /* Type */
 
 a {
-	text-decoration: none
+	color: $blue;
+	text-decoration: none;
+}
+
+a.delete-list {
+	background-color: #fff;
+	color: $red;
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 2px 4px;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 14px;
+	transform: scale(1,.85);
+}
+
+a.edit-list {
+	display: block;
+	margin: 15px 0 0 0;
 }
 
 p {
@@ -40,27 +60,41 @@ p {
 	margin: 5px 0 10px 0;
 }
 
+p.notes {
+	color: darken($light-grey, 30%);
+}
+
 h1 {
-	color: $blue;
+	color: $dark-grey;
 	font-size: 48px;
 	margin: 0;
 }
 
 h2 {
+	border-bottom: 1px solid $light-grey;
 	font-size: 32px;
-	line-height: 38px;
-	margin: 0;
-	padding: 0;
+	line-height: 32px;
+	margin: 0 0 5px;
+	padding: 0 0 5px;
+	position: relative;
+}
+
+h3 {
+	color: $blue;
+	font-size: 28px;
+	line-height: 24px;
+	margin: 5px 0 15px;
 }
 
 ul {
 	list-style: none;
 	margin: 0;
-	padding: 0;
+	padding: 30px;
 }
 
 ul li {
-	background-color: $light-grey;
+	background-color: #fff;
+	box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.15);
 	margin: 0 0 15px;
 	padding: 30px;
 }
@@ -68,13 +102,17 @@ ul li {
 /* Forms */
 
 .add-list-form {
-	margin: 30px 0 45px 0;
+	background-color: #fff;
+	border-top: 1px solid $light-grey;
+	margin: 0 0 30px 0;
+	padding: 30px;
 }
 
 input[type='text'],
 textarea {
 	display: block;
-	border: 1px solid #d1d1d1;
+	border: none;
+	border-bottom: 2px solid $light-grey;
 	margin: 0 0 15px;
 	padding: 4px 12px;
 	width: 100%;
@@ -92,11 +130,11 @@ textarea {
 }
 
 input[type='submit'] {
-	border: 2px solid #000;
+	background-color: $blue;
+	border: 2px solid $blue;
+	color: #fff;
 	font-family: inherit;
 	font-size: inherit;
-	color: inherit;
-	background: none;
 	cursor: pointer;
 	padding: 7px 30px;
 	display: inline-block;
@@ -106,5 +144,9 @@ input[type='submit'] {
 	font-weight: 700;
 	outline: none;
 	position: relative;
-	transition: all 0.3s;
+	transition: all 0.15s;
+
+	&:hover {
+		background-color: darken($blue, 15%);
+	}
 }
