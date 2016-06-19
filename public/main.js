@@ -1,46 +1,42 @@
-var css = require('!style!css!sass!./scss/main.scss');
+var css = require('./scss/main.scss');
 var angular = require('angular');
+var ngResource = require('angular-resource');
 
-angular.module('favlist', [])
-	.controller('FavListController', function ($scope, $http) {
+var favlistApp = angular.module('favlist', ['ngResource']);
+
+favlistApp
+	.factory('FavListService', function ($resource) {
+		return $resource('http://localhost:3000/lists/:id', {id: '@id'});
+	});
+
+favlistApp
+	.controller('FavListController', function ($scope, $http, FavListService) {
 		var favlist = this;
 
 		// Retrieve lists
-		$http({
-			method: 'GET',
-			url: 'http://localhost:3000/lists'
-		}).then(function successCallback(response) {
-			favlist.lists = response.data.reverse();
-		}, function errorCallback(response) {
-			console.log(response);
-		});
+		favlist.lists = FavListService.query();
 
 		// Add list action
 		favlist.addList = function () {
-			$http({
-				method: 'POST',
-				url: 'http://localhost:3000/lists',
-				data: {
-					name: favlist.name,
-					description: favlist.description
+			var newList = FavListService.save(
+				{ name: favlist.name, description: favlist.description },
+				function () {
+					favlist.lists.unshift(newList);
 				}
-			}).then(function successCallback(response) {
-				favlist.lists.unshift(response.data);
-			}, function errorCallback(response) {
-				console.log(response);
-			});
+			);
 		}
 
 		// Remove list action
 		favlist.removeList = function (index) {
 			var listId = favlist.lists[index].id;
-			$http({
-				method: 'DELETE',
-				url: 'http://localhost:3000/lists/' + listId
-			}).then(function successCallback(response) {
-				favlist.lists.splice(index, 1);
-			}, function errorCallback(response) {
-				console.log(response);
-			});
+			FavListService.delete(
+				{ id: listId },
+				function () {
+					favlist.lists.splice(index, 1);
+				}
+			);
 		}
+	})
+	.controller('FavListItemsController', function ($scope) {
+		var favlistItems = this;
 	});

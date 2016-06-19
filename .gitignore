@@ -4,3 +4,4 @@ data/*.sqlite
 *.log
 platforms/
 plugins/
+notes.txt

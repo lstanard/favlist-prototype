@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "angular": "^1.5.6",
+    "angular-resource": "^1.5.7",
     "autoprefixer": "^6.3.6",
     "css-loader": "^0.23.1",
     "cssnano": "^3.5.2",

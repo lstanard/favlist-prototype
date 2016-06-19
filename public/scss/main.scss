@@ -90,6 +90,11 @@ ul {
 	list-style: none;
 	margin: 0;
 	padding: 30px;
+
+	@media (min-width: 890px) {
+		display: flex;
+		flex-wrap: wrap;
+	}
 }
 
 ul li {
@@ -97,6 +102,15 @@ ul li {
 	box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.15);
 	margin: 0 0 15px;
 	padding: 30px;
+
+	@media (min-width: 890px) {
+		margin: 0 2% 30px 2%;
+		width: 46%;
+	}
+
+	@media (min-width: 1200px) {
+		width: 29%;
+	}
 }
 
 /* Forms */
@@ -129,6 +143,7 @@ textarea {
 	padding: 8px 12px;
 }
 
+.btn,
 input[type='submit'] {
 	background-color: $blue;
 	border: 2px solid $blue;

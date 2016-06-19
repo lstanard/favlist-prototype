@@ -14,9 +14,10 @@
 
 ## Commands
 
-Run on node.js version 5. `nvm use 5`
+Run on node.js version 5.
 
-* `npm start` = start application
+1. `nvm use 5` (if necessary)
+2. `npm start` = start application
 
 ## Build
 
@@ -28,7 +29,18 @@ Run on node.js version 5. `nvm use 5`
 
 ## Application notes
 
-### Models
+### Resources
+
+| Resource	      | Method    		| Endpoint
+| --------------- | ------------    | ------------- |
+| Get all lists   | GET       		| /lists        |
+| Get list     	  | GET       		| /lists/:id    |
+| Create list     | POST       		| /lists	    |
+| Delete list     | DELETE       	| /lists/:id	|
+| Update list     | PUT       	    | /lists/:id	|
+| Create user     | POST       		| /users	    |
+
+#### Models
 
 * User
 	* user.hasMany(list)
@@ -37,12 +49,6 @@ Run on node.js version 5. `nvm use 5`
 	* list.hasMany(listItem)
 * ListItem
 	* listItem.belongsTo(list)
-
-### Resources
-
-* Create new user = `POST /users`
-* User login = `POST /users/login`
-* User logout = `DELETE /users/login`
 
 ### Deployment to Heroku
 

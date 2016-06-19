@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Favlist Prototype</title>
 		<link href="https://fonts.googleapis.com/css?family=Jaldi:400,700" rel="stylesheet">
-		<!-- <link rel=stylesheet href="css/main.css"> -->
+		<link rel=stylesheet href="css/main.css">
 	</head>
 	<body ng-cloak>
 		<div class="wrapper">
@@ -16,7 +16,7 @@
 				<div class="add-list-form">
 					<h3>New list</h3>
 					<form name="addList" ng-submit="favlist.addList()">
-						<input type="text" ng-model="favlist.name" placeholder="New list name">
+						<input type="text" ng-model="favlist.name" placeholder="List name">
 						<p>Notes</p>
 						<textarea ng-model="favlist.description"></textarea>
 						<input type="submit" value="add">
@@ -26,7 +26,15 @@
 					<li ng-repeat="list in favlist.lists">
 						<h2>{{list.name}} <a href="#" ng-click="favlist.removeList($index); $event.preventDefault();" class="delete-list">X</a></h2>
 						<p class="notes">{{list.description}}</p>
-						<p><a href="#" class="edit-list">Edit list</a></p>
+						<div class="list-items" ng-controller="FavListItemsController as favlistItems">
+							<ul>
+								<li ng-repeat="listItem in favlistItems.listItems">
+									<p>{{favlistItem.name}}</p>
+								</li>
+							</ul>
+							<a href="#" ng-click="" class="btn">Add item</a>
+						</div>
+						<p><a href="#" class="edit-list">Edit</a></p>
 					</li>
 				</ul>
 			</div>
