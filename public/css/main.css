@@ -1,6 +1,15 @@
 * {
   box-sizing: border-box; }
 
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+ul li {
+  margin: 0;
+  padding: 0; }
+
 [ng\:cloak],
 [ng-cloak],
 [data-ng-cloak],
@@ -37,7 +46,7 @@ a.delete-list {
   transform: scale(1, 0.85); }
 
 a.edit-list {
-  display: block;
+  display: inline-block;
   margin: 15px 0 0 0; }
 
 p {
@@ -67,27 +76,49 @@ h3 {
   line-height: 24px;
   margin: 5px 0 15px; }
 
-ul {
-  list-style: none;
+h4 {
+  color: #727272;
   margin: 0;
+  font-size: 24px;
+  line-height: 28px;
+  position: relative; }
+
+/* Lists */
+.lists > ul {
+  list-style: none;
   padding: 30px; }
   @media (min-width: 890px) {
-    ul {
+    .lists > ul {
       display: flex;
       flex-wrap: wrap; } }
 
-ul li {
+.lists > ul > li {
   background-color: #fff;
   box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.15);
   margin: 0 0 15px;
   padding: 30px; }
   @media (min-width: 890px) {
-    ul li {
+    .lists > ul > li {
       margin: 0 2% 30px 2%;
       width: 46%; } }
   @media (min-width: 1200px) {
-    ul li {
+    .lists > ul > li {
       width: 29%; } }
+
+/* List items */
+.list-items ul {
+  margin: 15px -30px 15px -30px; }
+
+.list-items ul li {
+  background-color: #EEEEEE;
+  margin: 0 0 2px;
+  padding: 15px 30px; }
+
+.list-items-none {
+  border: 4px dashed #EEEEEE;
+  margin: 15px 0 20px;
+  padding: 18px;
+  text-align: center; }
 
 /* Forms */
 .add-list-form {

@@ -22,21 +22,26 @@
 						<input type="submit" value="add">
 					</form>
 				</div>
-				<ul>
-					<li ng-repeat="list in favlist.lists">
-						<h2>{{list.name}} <a href="#" ng-click="favlist.removeList($index); $event.preventDefault();" class="delete-list">X</a></h2>
-						<p class="notes">{{list.description}}</p>
-						<div class="list-items" ng-controller="FavListItemsController as favlistItems">
-							<ul>
-								<li ng-repeat="listItem in favlistItems.listItems">
-									<p>{{favlistItem.name}}</p>
-								</li>
-							</ul>
-							<a href="#" ng-click="" class="btn">Add item</a>
-						</div>
-						<p><a href="#" class="edit-list">Edit</a></p>
-					</li>
-				</ul>
+				<div class="lists">
+					<ul>
+						<li ng-repeat="list in favlist.lists" ng-init="outerIndex = $index">
+							<h2>{{list.name}} <a href="#" ng-click="favlist.removeList($index); $event.preventDefault();" class="delete-list">X</a></h2>
+							<p class="notes">{{list.description}}</p>
+							<div class="list-items">
+								<ul ng-show="list.listItems.length > 0">
+									<li ng-repeat="listItem in list.listItems" ng-init="innerIndex = $index">
+										<h4>{{listItem.name}} <a href="#" ng-click="favlist.removeListItem(outerIndex, innerIndex); $event.preventDefault();" class="delete-list">X</a></h4>
+										<p>{{listItem.notes}}</p>
+										<p><strong>Rating:</strong> {{listItem.rating}}</p>
+									</li>
+								</ul>
+								<div class="list-items-none" ng-hide="list.listItems.length > 0"><p>No items on this list, yet!</p></div>
+								<a href="#" ng-click="" class="btn">Add item</a>
+							</div>
+							<p><a href="#" class="edit-list">Edit</a></p>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</body>
