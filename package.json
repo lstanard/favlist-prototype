@@ -35,6 +35,7 @@
     "css-loader": "^0.23.1",
     "cssnano": "^3.5.2",
     "extract-text-webpack-plugin": "^1.0.1",
+    "lodash": "^4.13.1",
     "modernizr-webpack-plugin": "^1.0.5",
     "node-sass": "^3.8.0",
     "nodemon": "^1.9.2",

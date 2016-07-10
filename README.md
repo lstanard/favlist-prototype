@@ -58,3 +58,8 @@ Run on node.js version 5.
 * Finish user model, authentication
 * Abstract keys in user model methods
 * Fix sequelize-fixtures test data issue (in db.js)
+
+## Misc
+
+* li.st
+* REX - share recommendations

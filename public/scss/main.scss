@@ -1,6 +1,7 @@
 $green: #53DF83;
 $blue: #47D2E9;
 $red: #FC575E;
+$yellow: #F7BC05;
 $light-grey: #EEEEEE;
 $dark-grey: #3F3F3F;
 
@@ -48,16 +49,26 @@ a {
 }
 
 a.delete-list {
-	background-color: #fff;
-	color: $red;
+	display: inline-block;
+	background-color: $red;
+	border-radius: 50%;
+	color: #fff;
 	position: absolute;
 	right: 0;
 	top: 0;
-	padding: 2px 4px;
+	height: 20px;
+	width: 20px;
+	margin: 0;
+	padding: 0;
 	font-size: 14px;
 	font-weight: bold;
-	line-height: 14px;
-	transform: scale(1,.85);
+	line-height: 22px;
+	text-align: center;
+
+	span {
+		display: inline-block;
+		transform: scale(1,.85);
+	}
 }
 
 a.edit-list {
@@ -156,6 +167,16 @@ h4 {
 	margin: 15px 0 20px;
 	padding: 18px;
 	text-align: center;
+}
+
+/* Star ratings */
+
+.star-rating {
+}
+
+.star {
+	color: $yellow;
+	font-size: 24px;
 }
 
 /* Forms */
