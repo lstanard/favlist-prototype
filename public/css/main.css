@@ -141,6 +141,7 @@ h4 {
   padding: 30px; }
 
 input[type='text'],
+input[type='number'],
 textarea {
   display: block;
   border: none;
@@ -150,7 +151,8 @@ textarea {
   width: 100%;
   font-size: 16px; }
 
-input[type='text'] {
+input[type='text'],
+input[type='number'] {
   height: 40px;
   line-height: 24px; }
 

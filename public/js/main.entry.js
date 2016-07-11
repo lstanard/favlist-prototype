@@ -89,6 +89,18 @@
 				);
 			}
 
+			// Add list item action
+			favlist.addListItem = function (listIndex) {
+				var listId = favlist.lists[listIndex].id;
+
+				var newListItem = FavListItemsService.save(
+					{ listId: listId, name: favlist.listitem.name, notes: favlist.listitem.notes, rating: favlist.listitem.rating },
+					function () {
+						favlist.lists[listIndex].listItems.unshift(newListItem);
+					}
+				);
+			}
+
 			// Remove list item action
 			favlist.removeListItem = function (listIndex, listItemIndex) {
 				var listId = favlist.lists[listIndex].id;

@@ -38,7 +38,12 @@
 									</li>
 								</ul>
 								<div class="list-items-none" ng-hide="list.listItems.length > 0"><p>No items on this list, yet!</p></div>
-								<a href="#" ng-click="" class="btn">Add item</a>
+								<form name="addListItem" ng-submit="favlist.addListItem($index)">
+									<input type="text" ng-model="favlist.listitem.name" placeholder="Name">
+									<input type="number" ng-model="favlist.listitem.rating" placeholder="Rating">
+									<textarea ng-model="favlist.listitem.notes"></textarea>
+									<input type="submit" value="Add item">
+								</form>
 							</div>
 							<p><a href="#" class="edit-list">Edit</a></p>
 						</li>
