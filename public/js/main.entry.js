@@ -91,6 +91,8 @@
 
 			// Add list item action
 			favlist.addListItem = function (listIndex) {
+				// TODO: Creating a new list and immediately adding an item results in an error
+
 				var listId = favlist.lists[listIndex].id;
 
 				var newListItem = FavListItemsService.save(

@@ -24,7 +24,7 @@
 				</div>
 				<div class="lists">
 					<ul>
-						<li ng-repeat="list in favlist.lists" ng-init="outerIndex = $index">
+						<li ng-repeat="list in favlist.lists | orderBy:'name'" ng-init="outerIndex = $index">
 							<h2>{{list.name}} <a href="#" ng-click="favlist.removeList(list); $event.preventDefault();" class="delete-list"><span>X</span></a></h2>
 							<p class="notes">{{list.description}}</p>
 							<div class="list-items">
