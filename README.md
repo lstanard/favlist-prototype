@@ -14,10 +14,7 @@
 
 ## Commands
 
-Run on node.js version 5.
-
-1. `nvm use 5` (if necessary)
-2. `npm start` = start application
+`npm start` = start application
 
 ## Build
 
