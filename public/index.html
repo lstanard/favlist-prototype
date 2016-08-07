@@ -29,8 +29,8 @@
 							<p class="notes">{{list.description}}</p>
 							<div class="list-items">
 								<ul ng-show="list.listItems.length > 0">
-									<li ng-repeat="listItem in list.listItems" ng-init="innerIndex = $index">
-										<h4>{{listItem.name}} <a href="#" ng-click="favlist.removeListItem(outerIndex, innerIndex); $event.preventDefault();" class="delete-list"><span>X</span></a></h4>
+									<li ng-repeat="listItem in list.listItems | orderBy:'-rating'" ng-init="innerIndex = $index">
+										<h4>{{listItem.name}} <a href="#" ng-click="favlist.removeListItem(list, listItem); $event.preventDefault();" class="delete-list"><span>X</span></a></h4>
 										<div class="star-rating">
 											<item-rating rating="listItem.rating"></item-rating>
 										</div>
@@ -38,10 +38,10 @@
 									</li>
 								</ul>
 								<div class="list-items-none" ng-hide="list.listItems.length > 0"><p>No items on this list, yet!</p></div>
-								<form name="addListItem" ng-submit="favlist.addListItem($index)">
-									<input type="text" ng-model="favlist.listitem.name" placeholder="Name">
-									<input type="number" ng-model="favlist.listitem.rating" placeholder="Rating">
-									<textarea ng-model="favlist.listitem.notes"></textarea>
+								<form name="list.addListItemForm" ng-submit="favlist.addListItem(list)">
+									<input type="text" name="name" ng-model="list.listitem.name" placeholder="Name">
+									<input type="number" ng-model="list.listitem.rating" placeholder="Rating">
+									<textarea ng-model="list.listitem.notes"></textarea>
 									<input type="submit" value="Add item">
 								</form>
 							</div>

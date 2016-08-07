@@ -1,6 +1,7 @@
 var css = require('./scss/main.scss');
 var angular = require('angular');
 var ngResource = require('angular-resource');
+var _ = require('lodash');
 
 var favlistApp = angular.module('favlist', ['ngResource']);
 
@@ -44,28 +45,27 @@ favlistApp
 		}
 
 		// Add list item action
-		favlist.addListItem = function (listIndex) {
-			// TODO: Creating a new list and immediately adding an item results in an error
-
-			var listId = favlist.lists[listIndex].id;
-
+		favlist.addListItem = function (list) {
 			var newListItem = FavListItemsService.save(
-				{ listId: listId, name: favlist.listitem.name, notes: favlist.listitem.notes, rating: favlist.listitem.rating },
+				{ listId: list.id, name: list.listitem.name, notes: list.listitem.notes, rating: list.listitem.rating },
 				function () {
-					favlist.lists[listIndex].listItems.unshift(newListItem);
+					// TODO: Can't get setPristine to work
+					// console.log($scope.form.addListItemForm);
+					// list.addListItemForm.$setPristine();
+					list.listItems.unshift(newListItem);
 				}
 			);
 		}
 
 		// Remove list item action
-		favlist.removeListItem = function (listIndex, listItemIndex) {
-			var listId = favlist.lists[listIndex].id;
-			var listItemId = favlist.lists[listIndex].listItems[listItemIndex].id;
-
+		favlist.removeListItem = function (list, listItem) {
 			FavListItemsService.delete(
-				{ listId: listId, listItemId: listItemId },
+				{ listId: list.id, listItemId: listItem.id },
 				function () {
-					favlist.lists[listIndex].listItems.splice(listItemIndex, 1);
+					// TODO: Not properly removing from local list scope
+					// list.listItems = _.remove(list.listItems, function(n) {
+					// 	return n.id = listItem.id;
+					// });
 				}
 			);
 		}
