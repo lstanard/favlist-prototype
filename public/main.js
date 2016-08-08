@@ -59,13 +59,13 @@ favlistApp
 
 		// Remove list item action
 		favlist.removeListItem = function (list, listItem) {
+
 			FavListItemsService.delete(
 				{ listId: list.id, listItemId: listItem.id },
 				function () {
-					// TODO: Not properly removing from local list scope
-					// list.listItems = _.remove(list.listItems, function(n) {
-					// 	return n.id = listItem.id;
-					// });
+					var index = _.indexOf(favlist.lists, _.find(favlist.lists, { id: list.id }));
+					var itemIndex = _.indexOf(favlist.lists[index].listItems, _.find(favlist.lists[index].listItems, { id: listItem.id }));
+					favlist.lists[index].listItems.splice(itemIndex, 1);
 				}
 			);
 		}

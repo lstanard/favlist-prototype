@@ -24,12 +24,12 @@
 				</div>
 				<div class="lists">
 					<ul>
-						<li ng-repeat="list in favlist.lists | orderBy:'name'" ng-init="outerIndex = $index">
+						<li ng-repeat="list in favlist.lists | orderBy:'name'">
 							<h2>{{list.name}} <a href="#" ng-click="favlist.removeList(list); $event.preventDefault();" class="delete-list"><span>X</span></a></h2>
 							<p class="notes">{{list.description}}</p>
 							<div class="list-items">
 								<ul ng-show="list.listItems.length > 0">
-									<li ng-repeat="listItem in list.listItems | orderBy:'-rating'" ng-init="innerIndex = $index">
+									<li ng-repeat="listItem in list.listItems | orderBy:'-rating'">
 										<h4>{{listItem.name}} <a href="#" ng-click="favlist.removeListItem(list, listItem); $event.preventDefault();" class="delete-list"><span>X</span></a></h4>
 										<div class="star-rating">
 											<item-rating rating="listItem.rating"></item-rating>
