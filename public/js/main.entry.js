@@ -80,10 +80,11 @@
 			}
 
 			// Remove list action
-			favlist.removeList = function (index) {
-				var listId = favlist.lists[index].id;
+			favlist.removeList = function (list) {
+				var index = _.indexOf(favlist.lists, _.find(favlist.lists, { id: list.id }));
+
 				FavListService.delete(
-					{ listId: listId },
+					{ listId: list.id },
 					function () {
 						favlist.lists.splice(index, 1);
 					}
@@ -95,7 +96,6 @@
 				var newListItem = FavListItemsService.save(
 					{ listId: list.id, name: list.listitem.name, notes: list.listitem.notes, rating: list.listitem.rating },
 					function () {
-						// TODO: Can't get setPristine to work
 						// console.log($scope.form.addListItemForm);
 						// list.addListItemForm.$setPristine();
 						list.listItems.unshift(newListItem);
