@@ -14,7 +14,7 @@
 
 ## Commands
 
-`npm start` = start application
+* `npm start` = start application
 
 ## Build
 
@@ -46,15 +46,6 @@
 	* list.hasMany(listItem)
 * ListItem
 	* listItem.belongsTo(list)
-
-### Deployment to Heroku
-
-## TODO
-
-* When a list is deleted all associated list items should be deleted too
-* Finish user model, authentication
-* Abstract keys in user model methods
-* Fix sequelize-fixtures test data issue (in db.js)
 
 ## Misc
 
